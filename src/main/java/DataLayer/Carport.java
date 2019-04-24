@@ -12,7 +12,6 @@ public class Carport {
     Double Width; 
     
     // dette er et forsøg
-    //has
     
 
 
