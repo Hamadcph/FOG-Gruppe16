@@ -22,9 +22,9 @@ public class Connector {
      * "USERNAME" username of the owner.
      * "password" password of the owner.
      */
-    public static final String DATABASE = "Fog";
+    public static final String DATABASE = "fogh";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Hamad2660";
+    private static final String PASSWORD = "johnjohn";
 
     /**
      * Connecting magic.
