@@ -1,9 +1,8 @@
 <%-- 
-    Document   : Order
-    Created on : 01-05-2019, 13:44:48
+    Document   : OrderWithInc
+    Created on : 02-05-2019, 13:47:30
     Author     : shpattt
 --%>
-
 <%@page import="DataLayer.Carport"%>
 <%@page import="Mapper.DataMapper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -51,6 +50,17 @@
                 {   
             %>
             Choose size: <option value="<%= m.getShit()%>"> <%= c.getRoofstyle()%> </option>  
+                
+               
+            <% }    %>
+            </select>
+            <p1> Choose how much you would like the roof to incline: </p1> 
+            <select name="style">
+            <%
+                for(Carport c : m.getShit())
+                {   
+            %>
+            Choose size: <option value="<%= m.getShit()%>"> <%= c.getInc()+ "°"%> </option> 
                 
                
             <% }    %>

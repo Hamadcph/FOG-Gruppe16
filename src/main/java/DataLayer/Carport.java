@@ -13,11 +13,21 @@ public class Carport {
     private int length;
     private int width;
     private String roofstyle;
+    private int inc;
+
+    public int getInc() {
+        return inc;
+    }
+
+    public void setInc(int inc) {
+        this.inc = inc;
+    }
 
     @Override
     public String toString() {
-        return "Carport{" + "length=" + length + ", width=" + width + ", roofstyle=" + roofstyle + '}';
+        return "Carport{" + "length=" + length + ", width=" + width + ", roofstyle=" + roofstyle + ", inc=" + inc + '}';
     }
+
     
 
     public int getLength() {
@@ -36,10 +46,11 @@ public class Carport {
         this.width = width;
     }
 
-    public Carport(int length, int width, String roofstyle) {
+    public Carport(int length, int width, String roofstyle, int inc) {
         this.length = length;
         this.width = width;
         this.roofstyle = roofstyle;
+        this.inc = inc;
     }
 
     public String getRoofstyle() {
