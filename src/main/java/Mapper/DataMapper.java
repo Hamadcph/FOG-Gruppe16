@@ -5,11 +5,14 @@
  */
 package Mapper;
 
+import DataLayer.Carport;
 import DataLayer.Connector;
 import DataLayer.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -58,6 +61,27 @@ public class DataMapper {
         } catch (Exception e) {
         }
 
+    }
+       public ArrayList<Carport> getShit() {
+        ArrayList<Carport> carlist = new ArrayList<>();
+        try {
+            Connector connection = new Connector();
+            Statement stmt = connection.getConnection().createStatement();
+
+            String query
+                    = "Select * from carport;";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Carport car = new Carport(rs.getInt("length"), rs.getInt("width"));
+                carlist.add(car);
+
+            }
+
+        } catch (Exception e) {
+        }
+
+        System.out.println(Arrays.toString(carlist.toArray()));
+        return carlist;
     }
     
 }

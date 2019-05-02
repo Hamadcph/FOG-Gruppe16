@@ -16,7 +16,7 @@ public class NewMain {
      */
     public static void main(String[] args) {
         DataMapper m = new DataMapper();
-        System.out.println(m.getInfo("john@hotmail.com"));
+        System.out.println(m.getShit());
     }
     
 }

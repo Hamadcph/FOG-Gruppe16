@@ -4,6 +4,8 @@
     Author     : shpattt
 --%>
 
+<%@page import="DataLayer.Carport"%>
+<%@page import="Mapper.DataMapper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,24 @@
     <body>
         <form action="order">
         <h1>Order a carport!</h1>
-        <form/>
+        <div class="master">
+          
+        
+        <form action ="WelcomeServlet" method="get">
+            <p1> View topping selection: </p1> 
+            <select name="topping">
+            <%
+               
+                DataMapper m = new DataMapper();
+                for(Carport c : m.getShit())
+                {   
+            %>
+            View topping: <option value="<%= m.getShit()%>"> <%= c.getLength()%>  </option>
+                
+               
+            <% }    %>
+            </select>
+        </form>
             
     </body>
 </html>
