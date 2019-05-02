@@ -72,7 +72,7 @@ public class DataMapper {
                     = "Select * from carport;";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Carport car = new Carport(rs.getInt("length"), rs.getInt("width"));
+                Carport car = new Carport(rs.getInt("length"), rs.getInt("width"), rs.getString("roofstyle"));
                 carlist.add(car);
 
             }

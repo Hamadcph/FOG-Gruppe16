@@ -20,15 +20,37 @@
           
         
         <form action ="WelcomeServlet" method="get">
-            <p1> View topping selection: </p1> 
-            <select name="topping">
+            <p1> Choose length in cm: </p1> 
+            <select name="size">
             <%
                
                 DataMapper m = new DataMapper();
                 for(Carport c : m.getShit())
                 {   
             %>
-            View topping: <option value="<%= m.getShit()%>"> <%= c.getLength()%>  </option>
+            Choose size: <option value="<%= m.getShit()%>"> <%= c.getLength()%>  </option> 
+                
+               
+            <% }    %>
+            </select>
+            <p1> Choose width in cm: </p1> 
+            <select name="size">
+            <%
+                for(Carport c : m.getShit())
+                {   
+            %>
+            Choose size: <option value="<%= m.getShit()%>"> <%= c.getWidth()%> </option>  
+                
+               
+            <% }    %>
+            </select>
+            <p1> Choose a roofstyle: </p1> 
+            <select name="style">
+            <%
+                for(Carport c : m.getShit())
+                {   
+            %>
+            Choose size: <option value="<%= m.getShit()%>"> <%= c.getRoofstyle()%> </option>  
                 
                
             <% }    %>

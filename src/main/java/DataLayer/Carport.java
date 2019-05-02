@@ -12,11 +12,13 @@ package DataLayer;
 public class Carport {
     private int length;
     private int width;
+    private String roofstyle;
 
     @Override
     public String toString() {
-        return "Carport{" + "length=" + length + ", width=" + width + '}';
+        return "Carport{" + "length=" + length + ", width=" + width + ", roofstyle=" + roofstyle + '}';
     }
+    
 
     public int getLength() {
         return length;
@@ -34,8 +36,17 @@ public class Carport {
         this.width = width;
     }
 
-    public Carport(int length, int width) {
+    public Carport(int length, int width, String roofstyle) {
         this.length = length;
         this.width = width;
+        this.roofstyle = roofstyle;
+    }
+
+    public String getRoofstyle() {
+        return roofstyle;
+    }
+
+    public void setRoofstyle(String roofstyle) {
+        this.roofstyle = roofstyle;
     }
 }
