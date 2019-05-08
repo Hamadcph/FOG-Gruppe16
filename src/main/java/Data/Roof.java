@@ -1,4 +1,4 @@
-package DataLayer;
+package Data;
 
 /**
  *
@@ -6,8 +6,10 @@ package DataLayer;
  */
 public class Roof {
     
+    private int roofId;
     private String type; 
-    private String colour; 
+    private String colour;
+    private int price;
     private int inclination;
 
     public Roof(String type, String colour, int inclination) {

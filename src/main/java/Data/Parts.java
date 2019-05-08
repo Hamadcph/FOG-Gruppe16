@@ -1,17 +1,17 @@
-package DataLayer;
+package Data;
 
 /**
  *
  * @author Hamad
  */
-public class Material {
+public class Parts {
 
     private String name;
     private int quantity;
     private int price;
     private String description;
 
-    public Material(String name, int quantity, int price, String description) {
+    public Parts(String name, int quantity, int price, String description) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;

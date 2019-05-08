@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package Data;
 
-/**
- *
- * @author shpattt
+import java.util.ArrayList;
+
+/**aa
+ *b
+ * @author Hamad
  */
-public class Calculate {
+public class Cart {
+    
+    private ArrayList<Parts> parts; 
+    private Roof roof; 
     
 }
