@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import DataLayer.Carport;
 import Mapper.DataMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -62,10 +63,10 @@ public class order extends HttpServlet {
       HttpSession session = request.getSession();
       DataMapper data = new DataMapper();
       
-      String lengthwidth  = request.getParameter("size");
+      int lengthandwidth  = Integer.parseInt(request.getParameter("size"));
       String roofstyle = request.getParameter("style");
-      String both = lengthwidth + "&" + roofstyle;
-      Carport car = data.getShit()
+      String both = lengthandwidth + "&" + roofstyle;
+      
     }
 
     /**
