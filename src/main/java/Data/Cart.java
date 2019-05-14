@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package Data;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Cart {
     
-    private ArrayList<Material> material; 
+    private ArrayList<Parts> parts; 
     private Roof roof; 
     
 }

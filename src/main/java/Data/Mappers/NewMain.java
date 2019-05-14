@@ -3,12 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package Data.Mappers;
 
 /**
  *
  * @author shpattt
  */
-public class PartsList {
+public class NewMain {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        UserMapper map = new UserMapper();
+      
+    }
     
 }

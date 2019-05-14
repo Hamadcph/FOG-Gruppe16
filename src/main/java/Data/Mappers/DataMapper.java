@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Mapper;
+package Data.Mappers;
 
-import DataLayer.Carport;
-import DataLayer.Connector;
-import DataLayer.User;
+import Data.Carport;
+import DB.Connector;
+import Data.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -72,7 +72,7 @@ public class DataMapper {
                     = "Select * from carport;";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Carport car = new Carport(rs.getInt("length"), rs.getInt("width"), rs.getString("roofstyle"), rs.getInt("incline"));
+                //Carport car = new Carport(rs.getInt("length"), rs.getInt("width"), rs.getString("roofstyle"), rs.getInt("incline"));
                 carlist.add(car);
 
             }
