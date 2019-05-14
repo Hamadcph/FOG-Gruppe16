@@ -8,12 +8,14 @@ public class Parts {
 
     private String name;
     private int quantity;
+    private String unit;
     private int price;
     private String description;
 
-    public Parts(String name, int quantity, int price, String description) {
+    public Parts(String name, int quantity, String unit, int price, String description) {
         this.name = name;
         this.quantity = quantity;
+        this.unit = unit;
         this.price = price;
         this.description = description;
     }
@@ -26,6 +28,10 @@ public class Parts {
         return quantity;
     }
 
+    public String getUnit() {
+        return unit;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -34,13 +40,11 @@ public class Parts {
         return description;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
-        return "Material{" + "name=" + name + ", quantity=" + quantity + ", price=" + price + ", description=" + description + '}';
+        return "Parts{" + "name=" + name + ", quantity=" + quantity + ", unit=" + unit + ", price=" + price + ", description=" + description + '}';
     }
+
+ 
 
 }

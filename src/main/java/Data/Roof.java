@@ -7,45 +7,37 @@ package Data;
 public class Roof {
     
     private int roofId;
-    private String type; 
-    private String colour;
+    private String description; 
+    private boolean raised;
     private int price;
-    private int inclination;
 
-    public Roof(String type, String colour, int inclination) {
-        this.type = type;
-        this.colour = colour;
-        this.inclination = inclination;
+    public Roof(int roofId, String description, boolean raised, int price) {
+        this.roofId = roofId;
+        this.description = description;
+        this.raised = raised;
+        this.price = price;
     }
 
-    public String getType() {
-        return type;
+    public int getRoofId() {
+        return roofId;
     }
 
-    public String getColour() {
-        return colour;
+    public String getDescription() {
+        return description;
     }
 
-    public int getInclination() {
-        return inclination;
+    public boolean isRaised() {
+        return raised;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public int getPrice() {
+        return price;
     }
+    
 
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
+    
 
-    public void setInclination(int inclination) {
-        this.inclination = inclination;
-    }
-
-    @Override
-    public String toString() {
-        return "Roof{" + "type=" + type + ", colour=" + colour + ", inclination=" + inclination + '}';
-    }
+    
     
     
     

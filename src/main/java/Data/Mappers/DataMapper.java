@@ -5,9 +5,9 @@
  */
 package Data.Mappers;
 
-import DataLayer.Carport;
-import DataLayer.Connector;
-import DataLayer.User;
+import Data.Carport;
+import DB.Connector;
+import Data.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;

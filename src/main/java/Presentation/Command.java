@@ -1,31 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentation;
 
+import Logic.LoginSampleException;
 import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author Younes
  */
-public class Command {
+abstract class Command {
     
-    public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    private static HashMap<String, Command> commands;
     
-    public static Command from(HttpServletRequest request) {
+    private static void initCommands(){
+        commands = new HashMap<>();
+        commands.put("login", new LoginCommand() );
+        commands.put("registerCust", new RegisterCustomerCommand() );
+        commands.put("registerEmp", new RegisterEmployeeCommand());
         
-        Command c = null;
-        
-        String origin = request.getParameter("command");
-        
-        Map<String, Command> commands = new HashMap();
-       
-        return c;
+              
+    
+    
     }
+        
+        static Command from(HttpServletRequest request){
+            String commandName = request.getParameter("command");
+            if(commands == null){
+                initCommands();
+            }
+         
+            return commands.getOrDefault(commandName, new DefaultCommand() );
+        
+        }
+        
+        abstract String execute(HttpServletRequest request, HttpServletResponse response)
+                    throws LoginSampleException;
+    
+    
     
     
 }

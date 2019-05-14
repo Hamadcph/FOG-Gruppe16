@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import Logic.LoginSampleException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Younes
  */
-@WebServlet(name = "FrontController", urlPatterns = {"/jsp/FrontController/*"})
+
+@WebServlet( name = "FrontController", urlPatterns = { "/FrontController" } )
 public class FrontController extends HttpServlet {
 
     /**
@@ -27,18 +29,19 @@ public class FrontController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws Logic.LoginSampleException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         try {
-            Command c = Command.from(request);
-            c.execute(request, response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, LoginSampleException {
+        Command action = Command.from(request);
+        String view = action.execute(request, response);
+        request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
+        
+        
         }
+       
     }
 
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

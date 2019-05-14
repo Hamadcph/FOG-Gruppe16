@@ -10,44 +10,34 @@ package Data;
  * @author shpattt
  */
 public class User {
-   private int userid;
+    
     private String email;
-   private String password; 
+    private String password;
+    private String role;
 
-    @Override
-    public String toString() {
-        return "User{" + "userid=" + userid + ", email=" + email + ", password=" + password + '}';
+    public User(String email, String password, String role) {
+        
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
+    
 
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getRole() {
+        return role;
     }
 
-    public User(int userid, String email, String password) {
-        this.userid = userid;
-        this.email = email;
-        this.password = password;
-    }
+    
+
+    
   
   
 }
