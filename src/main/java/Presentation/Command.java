@@ -1,6 +1,6 @@
 package Presentation;
 
-import Logic.LoginSampleException;
+import Logic.Exceptions.LoginException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +35,7 @@ abstract class Command {
         }
         
         abstract String execute(HttpServletRequest request, HttpServletResponse response)
-                    throws LoginSampleException;
+                    throws LoginException;
     
     
     

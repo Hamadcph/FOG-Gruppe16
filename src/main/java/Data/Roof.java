@@ -7,14 +7,16 @@ package Data;
 public class Roof {
     
     private int roofId;
-    private String description; 
     private boolean raised;
+    private String type;
+    private int roofInclination;
     private int price;
 
-    public Roof(int roofId, String description, boolean raised, int price) {
+    public Roof(int roofId, boolean raised, String type, int roofInclination, int price) {
         this.roofId = roofId;
-        this.description = description;
         this.raised = raised;
+        this.type = type;
+        this.roofInclination = roofInclination;
         this.price = price;
     }
 
@@ -22,19 +24,25 @@ public class Roof {
         return roofId;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public boolean isRaised() {
         return raised;
+    }
+    
+    
+    public String getType() {
+        return type;
+    }
+
+  
+    public int getRoofInclination() {
+        return roofInclination;
     }
 
     public int getPrice() {
         return price;
     }
-    
 
+   
     
 
     

@@ -9,12 +9,12 @@ package Data;
  *
  * @author Younes
  */
-public class WoodAndRoofParts extends Parts {
+public class WoodRoofParts extends Parts {
     private int length;
     
     
-    public WoodAndRoofParts(String name, int quantity, String unit, int price, String description) {
-        super(name, quantity, unit, price, description);
+    public WoodRoofParts(String name, int quantity, String unit, String description) {
+        super(name, quantity, unit, description);
     }
 
     public int getLength() {

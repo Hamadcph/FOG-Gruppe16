@@ -15,19 +15,18 @@ public class Carport {
     private int length;
     private int width;
     private Roof roof;
-    private int roofInclination;
     private ToolShed toolshed;
-    private ArrayList<Parts> partsList = new ArrayList<Parts>();
+    
 
-    public Carport(int length, int width, Roof roof, int roofInclination, ToolShed toolshed) {
+    public Carport(int length, int width, Roof roof, ToolShed toolshed) { 
         this.length = length;
         this.width = width;
         this.roof = roof;
-        this.roofInclination = roofInclination;
         this.toolshed = toolshed;
     }
+
     
-   
+    
     
     public int getLength() {
         return length;
@@ -52,20 +51,8 @@ public class Carport {
     public ToolShed getToolshed() {
         return toolshed;
     }
-
-    public int getRoofInclination() {
-        return roofInclination;
-    }
-
-    public ArrayList<Parts> getPartsList() {
-        return partsList;
-    }
-
-    @Override
-    public String toString() {
-        return "Carport{" + "length=" + length + ", width=" + width + ", roof=" + roof + ", roofInclination=" + roofInclination + ", toolshed=" + toolshed + ", partsList=" + partsList + '}';
-    }
-    
 }
+
+ 
 
    

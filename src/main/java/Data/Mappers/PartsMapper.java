@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Data;
+package Data.Mappers;
+
+import DB.DBConnector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author Younes
  */
-public class FittingsScrewsParts extends Parts {
-    
-    public FittingsScrewsParts(String name, int quantity, String unit, int price, String description) {
-        super(name, quantity, unit, description);
-    }
+public class PartsMapper {
     
     
     

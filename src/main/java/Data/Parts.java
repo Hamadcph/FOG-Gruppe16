@@ -9,14 +9,12 @@ public class Parts {
     private String name;
     private int quantity;
     private String unit;
-    private int price;
     private String description;
 
-    public Parts(String name, int quantity, String unit, int price, String description) {
+    public Parts(String name, int quantity, String unit, String description) {
         this.name = name;
         this.quantity = quantity;
         this.unit = unit;
-        this.price = price;
         this.description = description;
     }
 
@@ -32,9 +30,6 @@ public class Parts {
         return unit;
     }
 
-    public int getPrice() {
-        return price;
-    }
 
     public String getDescription() {
         return description;

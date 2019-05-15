@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Logic;
+import Logic.Exceptions.LoginException;
 import Data.Mappers.UserMapper;
 import Data.User;
 
@@ -14,18 +15,18 @@ import Data.User;
  */
 public class LogicFacade {
 
-    public static User login( String username, String password) throws LoginSampleException {
-        return UserMapper.loginUser(username, password);
+    public static User login( String email, String password) throws LoginException {
+        return UserMapper.loginUser(email, password);
     } 
 
-    public static User createUserCustomer(String username, String password, String email ) throws LoginSampleException, ClassNotFoundException {
-        User user = new User(username, password, email, "customer");
+    public static User createUserCustomer(String email, String password ) throws LoginException, ClassNotFoundException {
+        User user = new User(email, password, "customer");
         UserMapper.createUser(user);
         return user;
     }
     
-    public static User createUserEmployee(String username, String password, String email ) throws LoginSampleException, ClassNotFoundException {
-        User user = new User(username, password, email, "employee");
+    public static User createUserEmployee(String username, String password, String email ) throws LoginException, ClassNotFoundException {
+        User user = new User(email, password, "employee");
         UserMapper.createUser(user);
         return user;
     }

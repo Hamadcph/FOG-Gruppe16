@@ -1,7 +1,7 @@
 package Data.Mappers;
 
 
-import Logic.LoginSampleException;
+import Logic.Exceptions.LoginException;
 import Data.User;
 import DB.Connector;
 import DB.DBConnector;
@@ -46,7 +46,7 @@ public class UserMapper {
     }
     
     
-    public static void createUser( User user ) throws LoginSampleException, ClassNotFoundException {
+    public static void createUser( User user ) throws LoginException, ClassNotFoundException {
        try {
             String SQL = "";
             PreparedStatement statement = DBConnector.connection().prepareStatement(user.getEmail());
@@ -69,7 +69,7 @@ public class UserMapper {
         }
     }
 
-    public static User loginUser( String email, String password ) throws LoginSampleException {
+    public static User loginUser( String email, String password ) throws LoginException {
         try {
             Connection con = DBConnector.connection();
             String SQL = "SELECT role, role FROM user "
@@ -87,10 +87,10 @@ public class UserMapper {
                
                 return user;
             } else {
-                throw new LoginSampleException( "Could not validate user" );
+                throw new LoginException( "Could not validate user" );
             }
         } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new LoginException(ex.getMessage());
         }
     }
     }

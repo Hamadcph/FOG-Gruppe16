@@ -13,10 +13,12 @@ public class ToolShed {
     
     private int width;
     private int length;
+    private int price;
 
-    public ToolShed(int width, int length) {
+    public ToolShed(int width, int length, int price) {
         this.width = width;
         this.length = length;
+        this.price = price;
     }
 
     public int getWidth() {
@@ -26,6 +28,12 @@ public class ToolShed {
     public int getLength() {
         return length;
     }
+
+    public int getPrice() {
+        return price;
+    }
+    
+    
 
     @Override
     public String toString() {
