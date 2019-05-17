@@ -17,6 +17,8 @@ public class DBConnector {
     
     private static Connection singleton;
     
+    private DBConnector(){}
+    
     public static void setConnection(Connection con){
         singleton = con;
     

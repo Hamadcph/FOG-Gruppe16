@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Data.Mappers;
+package Logic.Exceptions;
 
 /**
  *
- * @author shpattt
+ * @author Hamad
  */
-public class CarPortMapper {
+public class CarportException extends Exception {
+    
+    public CarportException(String message) {
+        super(message);
+    }
     
 }

@@ -15,25 +15,17 @@ import java.util.List;
 public class Order {
     
     private Carport carportOrdered;
-    private final ArrayList<WoodRoofParts> woodRoofList = new ArrayList<>();
-    private final ArrayList<FittingsScrewsParts> fittingsScrewsList = new ArrayList<>();
+    private CustomerInfo customerInfo;
+    
 
-    public Order(Carport carportOrdered) {
+    public Order(Carport carportOrdered, CustomerInfo customerInfo) {
         this.carportOrdered = carportOrdered;
+        this.customerInfo = customerInfo;
     }
 
     public Carport getCarportOrdered() {
         return carportOrdered;
     }
-
-    public ArrayList<WoodRoofParts> getWoodAndRoofList() {
-        return woodRoofList;
-    }
-
-    public ArrayList<FittingsScrewsParts> getFittingsScrewsList() {
-        return fittingsScrewsList;
-    }
-    
     
     
 }

@@ -1,0 +1,35 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Calculator;
+
+import Data.Carport;
+import Data.Material;
+
+
+/**
+ *
+ * @author Hamad
+ */
+public class MaterialCalc {
+    
+    public Material calculator(int length, int width, String roof) {
+        Carport carport = new Carport(length, width, roof, width);
+        // 1 metet = 10 stykker bræt
+        int Lwood = length * 10;
+        int Wwood = width * 10;
+        int poles = 4;
+        
+        int total = Lwood*2 + Wwood + poles;
+        
+        //1.antal bræt, 2.antal skruer, 3.taget, 4.antal beslag, 5.carport
+        Material m = new Material(total, total*5,roof,total*3, carport);
+        
+        return m;
+    }
+    
+    
+    
+}

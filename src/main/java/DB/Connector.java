@@ -12,55 +12,36 @@ import java.util.Properties;
  */
 public class Connector {
 
-    private Connection connection = null;
-	
-    private static final String IP = "localhost";
-    private static final String PORT = "3306";
+    private static String driver = "com.mysql.jdbc.Driver";
+    private static String URL = "jdbc:mysql://127.0.0.1:3306/FOG?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String id = "root";
+    private static String pw = "Hamad2660";
 
-    /**
-     * "DATABASE" which database to connect.
-     * "USERNAME" username of the owner.
-     * "password" password of the owner.
-     */
-    public static final String DATABASE = "fogh";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "johnjohn";
-
-    /**
-     * Connecting magic.
-     * @throws SQLException
-     */
-    public Connector() throws SQLException {
-     try
-     {
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE;
-        Properties props = new Properties();
-        props.put("user", USERNAME);
-        props.put("password", PASSWORD);
-        props.put("allowMultiQueries", true);
-        props.put("useUnicode", true);
-        props.put("useJDBCCompliantTimezoneShift", true);
-        props.put("useLegacyDatetimeCode", false);
-        props.put("serverTimezone", "CET");
-        this.connection = DriverManager.getConnection(url, props);
-        System.out.println("Connection correctly established to the database: " + DATABASE);
-    }
-     catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            ex.printStackTrace();
-            throw new SQLException(ex.getMessage());
-        }
-     }
-     
-    /**
-     * 
-     * @return
-     */
     public Connection getConnection() {
-        return this.connection;
+        Connection con = null;
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(URL, id, pw);  // The connection will be released upon program 
+            
+        } catch (Exception e) {
+            System.out.println("\n*** Remember to insert your  ID and PW in the DBConnector class! ***\n");
+            System.out.println("error in DBConnector.getConnection()");
+            System.out.println(e);
+        }
+
+        return con;
     }
+
+    public void releaseConnection(Connection con) {
+        try {
+            con.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
 }
     
-
+    public static void main(String[] args) {
+        
+    }
     
-
+}

@@ -5,6 +5,8 @@
  */
 package Presentation;
 
+import DB.DBConnector;
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +21,8 @@ public class DefaultCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) {
+        DBConnector con_ = new DBConnector();
+        Connection con = DBConnector.connection();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

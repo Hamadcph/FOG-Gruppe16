@@ -35,10 +35,7 @@ public class Parts {
         return description;
     }
 
-    @Override
-    public String toString() {
-        return "Parts{" + "name=" + name + ", quantity=" + quantity + ", unit=" + unit + ", price=" + price + ", description=" + description + '}';
-    }
+    
 
  
 

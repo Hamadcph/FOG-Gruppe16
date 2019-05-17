@@ -9,15 +9,13 @@ public class Roof {
     private int roofId;
     private boolean raised;
     private String type;
-    private int roofInclination;
-    private int price;
+  
 
-    public Roof(int roofId, boolean raised, String type, int roofInclination, int price) {
+    public Roof(int roofId, boolean raised, String type) {
         this.roofId = roofId;
         this.raised = raised;
         this.type = type;
-        this.roofInclination = roofInclination;
-        this.price = price;
+        
     }
 
     public int getRoofId() {
@@ -34,13 +32,6 @@ public class Roof {
     }
 
   
-    public int getRoofInclination() {
-        return roofInclination;
-    }
-
-    public int getPrice() {
-        return price;
-    }
 
    
     
