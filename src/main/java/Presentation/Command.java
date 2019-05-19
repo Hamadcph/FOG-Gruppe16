@@ -1,7 +1,10 @@
 package Presentation;
 
 import Logic.Exceptions.LoginException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,13 +19,10 @@ abstract class Command {
     private static void initCommands(){
         commands = new HashMap<>();
         commands.put("login", new LoginCommand() );
-        commands.put("registerCust", new RegisterCustomerCommand() );
-        commands.put("registerEmp", new RegisterEmployeeCommand());
+        commands.put("registerCustomer", new RegisterCustomerCommand() );
         
-              
-    
-    
-    }
+        
+       }
         
         static Command from(HttpServletRequest request){
             String commandName = request.getParameter("command");
@@ -35,7 +35,7 @@ abstract class Command {
         }
         
         abstract String execute(HttpServletRequest request, HttpServletResponse response)
-                    throws LoginException;
+                    throws ServletException, IOException, SQLException;
     
     
     

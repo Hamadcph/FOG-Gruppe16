@@ -8,6 +8,7 @@ package Presentation;
 import Logic.Exceptions.LoginException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,33 +19,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bruger
  */
-@WebServlet(name = "FrontControl", urlPatterns = {"/FrontControl"})
-public class FrontControl extends HttpServlet {
+@WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
+public class FrontController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, LoginException {
-        try {
-            Command action = Command.from(request);
-            String view = action.execute(request, response);
-            request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
-        }catch(LoginException ex){
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException
+            {
+        try{       
+        Command action = Command.from(request);
+        String view = action.execute(request, response);
+        request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
+        
+        }catch(Exception e){
             request.setAttribute("error", ex.getMessage());
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-        
-        
-        }
-       
+     }
     }
+ 
+        
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

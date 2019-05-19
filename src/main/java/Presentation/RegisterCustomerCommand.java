@@ -5,9 +5,16 @@
  */
 package Presentation;
 
-import Data.User;
-import Logic.LogicFacade;
+import Data.Customer;
+import Data.Mappers.DBFacade;
+import Data.Mappers.MapperFacade;
+import Logic.Exceptions.AlreadyExistsException;
 import Logic.Exceptions.LoginException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,28 +29,38 @@ public class RegisterCustomerCommand extends Command {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         
-        String username = request.getParameter( "username" );
-        String password1 = request.getParameter( "password1" );
-        String password2 = request.getParameter( "password2" );
-        String email = request.getParameter("email");
-        if (password1.equals(password2)) {
+        
+        MapperFacade mf = new DBFacade();
+        
+        String fname = request.getParameter("name");
+        String lname = request.getParameter("lastname");
+        String adress = request.getParameter("adress");
+        int cphone = Integer.getInteger(request.getParameter("phonenumber"));
+        String mail = request.getParameter("Email");
+        
+        Customer c = new Customer(mail, fname, lname, adress, cphone);
+        
+        if(mf.createCustomer(c)){
+            
             try {
-                User user = LogicFacade.createUserCustomer(username, password1, email);
-                HttpSession session = request.getSession();
-                session.setAttribute( "user", user );
-                session.setAttribute( "role", user.getRole() );
-                return user.getRole() + "page";
-            } catch (ClassNotFoundException ex) {
+                request.setAttribute("name", fname);
+                request.setAttribute("lastname", lname);
+                request.setAttribute("adress", adress);
+                request.setAttribute("phonenumber", cphone);
+                request.setAttribute("Email", mail);
                 
+                request.getRequestDispatcher("").forward(request, response);
+                
+            } catch (ServletException | IOException ex) {
+                System.out.println("Invalid information");
             }
-        } else {
-            throw new LoginException( "The two passwords did not match" );
+            
         }
-        return null;
-    }
+        return "page.jsp";
         
-        
-        
-    }
+   } 
+
+}
+            

@@ -18,7 +18,7 @@ public class Customer {
     private int phoneNumber;
     private int FK_ordernumber;
 
-    public Customer(int ID, String email, String name, String lastname, String adress, int phoneNumber, int FK_ordernumber) {
+    public Customer(int ID, String email, String password, String name, String lastname, String adress, int phoneNumber, int FK_ordernumber) {
         this.ID = ID;
         this.email = email;
         this.name = name;
@@ -26,6 +26,17 @@ public class Customer {
         this.adress = adress;
         this.phoneNumber = phoneNumber;
         this.FK_ordernumber = FK_ordernumber;
+    }
+    
+    public Customer(int id, String email, String name, String lastname, String adress, int phoneNumber) {
+        
+        this.ID = id;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+        this.adress = adress;
+        this.phoneNumber = phoneNumber;
+     
     }
     
     public Customer(String email, String name, String lastname, String adress, int phoneNumber) {
@@ -38,62 +49,37 @@ public class Customer {
      
     }
 
-
+   
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getEmail() {
         return email;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public String getAdress() {
         return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
     }
 
     public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public int getFK_ordernumber() {
         return FK_ordernumber;
     }
 
-    public void setFK_ordernumber(int FK_ordernumber) {
-        this.FK_ordernumber = FK_ordernumber;
-    }
+
+    
 
     @Override
     public String toString() {

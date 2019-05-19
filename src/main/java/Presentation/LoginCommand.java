@@ -5,8 +5,8 @@
  */
 package Presentation;
 
-import Data.User;
-import Logic.LogicFacade;
+import Data.Mappers.DBFacade;
+import Data.Mappers.MapperFacade;
 import Logic.Exceptions.LoginException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,14 +22,19 @@ public class LoginCommand extends Command {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginException {
-        String username = request.getParameter( "username" );
-        String password = request.getParameter( "password" );
-        User user = LogicFacade.login(username, password );
-        HttpSession session = request.getSession();
-        session.setAttribute( "user", user );
-        session.setAttribute( "role", user.getRole() );
-        return user.getRole() + "page";
-    }
+    String execute(HttpServletRequest request, HttpServletResponse response) t {
+        MapperFacade mf = new DBFacade();
+            int id = Integer.parseInt(request.getParameter("id"));
+            String password = request.getParameter("password");
+            
+            
+            if(mf.verifyEmployee(id, password)){
+                request.getSession().setAttribute("id", id);
+                request.getSession().setAttribute("password", password);
+                request.getRequestDispatcher("").forward(request, response); 
+            }
+            else{
+                request.getRequestDispatcher("").forward(request, response);      
+            }
     
 }
