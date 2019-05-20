@@ -5,16 +5,20 @@
  */
 package Presentation;
 
-import Data.User;
-import Logic.LogicFacade;
+import Data.Employee;
+import Data.Mappers.DBFacade;
+import Data.Mappers.MapperFacade;
 import Logic.Exceptions.LoginException;
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author bruger
+ * @author Younes
  */
 public class RegisterEmployeeCommand extends Command {
 
@@ -22,26 +26,25 @@ public class RegisterEmployeeCommand extends Command {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginException {
-       String username = request.getParameter("username");
-        String password1 = request.getParameter("password1");
-        String password2 = request.getParameter("password2");
-        String email = request.getParameter("email");
-        if ( password1.equals( password2 ) ) {
-            try {
-                User user = LogicFacade.createUserEmployee(username, password1, email);
-                HttpSession session = request.getSession();
-                session.setAttribute( "user", user );
-                session.setAttribute( "role", user.getRole());
-                return user.getRole() + "page";
-            } catch (ClassNotFoundException ex) {
-                
-            }
-        } else {
-            throw new LoginException( "The two passwords did not match" );
-        }
-        return null;
+    String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        MapperFacade mf = new DBFacade();
+        
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        int phoneNo = Integer.parseInt(request.getParameter("phoneNo"));
+        
+        Employee emp = new Employee(name, password, phoneNo);
+        
+       
+        
+        if(mf.createEmployee(emp)) {
+            request.setAttribute("name", name);
+            request.setAttribute("password", password);
+            request.setAttribute("phoneNo", phoneNo);
+        }    
+       return "noget.jsp";
+        
     }
     }
     
-}
+

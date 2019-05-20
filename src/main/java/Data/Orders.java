@@ -14,13 +14,13 @@ import java.sql.Date;
 public class Orders {    
    
     private int ono;
-    private Date deliviry;
+    private Date deliveryDate;
     private double shipping;
     private int carportmaterial_id;
 
-    public Orders(int ono, Date deliviry, double shipping, int carportmaterial_id) {
+    public Orders(int ono, Date deliveryDate, double shipping, int carportmaterial_id) {
         this.ono = ono;
-        this.deliviry = deliviry;
+        this.deliveryDate = deliveryDate;
         this.shipping = shipping;
         this.carportmaterial_id = carportmaterial_id;
     }
@@ -29,38 +29,20 @@ public class Orders {
         return ono;
     }
 
-    public void setOno(int ono) {
-        this.ono = ono;
-    }
-
-    public Date getDeliviry() {
-        return deliviry;
-    }
-
-    public void setDeliviry(Date deliviry) {
-        this.deliviry = deliviry;
+    public Date getDeliveryDate() {
+        return deliveryDate;
     }
 
     public double getShipping() {
         return shipping;
     }
 
-    public void setShipping(double shipping) {
-        this.shipping = shipping;
-    }
-
-    public int getcarportmaterial_id() {
+    public int getCarportmaterial_id() {
         return carportmaterial_id;
     }
 
-    public void setcarportmaterial_id(int carportmaterial_id) {
-        this.carportmaterial_id = carportmaterial_id;
-    }
 
-    @Override
-    public String toString() {
-        return "Orders{" + "ono=" + ono + ", deliviry=" + deliviry + ", shipping=" + shipping + ", carportmaterial_id=" + carportmaterial_id + '}';
-    }
-
+    
+    
 
 }

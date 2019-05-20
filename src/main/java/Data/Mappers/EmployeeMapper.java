@@ -21,9 +21,9 @@ import java.sql.SQLException;
         try{
             String sql = "INSERT INTO Employee(id, Ename, ePhone, password) VALUES(?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, e.getUserid());
+            pst.setInt(1, e.getEmpId());
             pst.setString(2, e.getName());
-            pst.setInt(3, e.getPhone());
+            pst.setInt(3, e.getPhoneNo());
             
             int hashPassword = e.getPassword().hashCode();
             String hashString = String.valueOf(hashPassword);

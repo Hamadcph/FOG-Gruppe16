@@ -12,16 +12,27 @@ package Data;
 public class Employee {
    private int empId;
    private String name;
-   private String email;
    private String password;
    private int phoneNo;
 
-    public Employee(int empId, String name, String email, String password, int phoneNo) {
+    public Employee(int empId, String name, String password, int phoneNo) {
         this.empId = empId;
         this.name = name;
-        this.email = email;
         this.password = password;
         this.phoneNo = phoneNo;
+    }
+
+    public Employee(String name, String password, int phoneNo) {
+        this.name = name;
+        this.password = password;
+        this.phoneNo = phoneNo;
+    }
+    
+    
+
+    public Employee(int empId, String password) {
+        this.empId = empId;
+        this.password = password;
     }
 
     public int getEmpId() {
@@ -32,10 +43,6 @@ public class Employee {
         return name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -44,6 +51,7 @@ public class Employee {
         return phoneNo;
     }
 
+    
     
 
    

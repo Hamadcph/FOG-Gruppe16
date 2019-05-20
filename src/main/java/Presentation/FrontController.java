@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import Logic.Exceptions.AlreadyExistsException;
 import Logic.Exceptions.LoginException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author bruger
+ * @author Younes
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
@@ -30,12 +31,11 @@ public class FrontController extends HttpServlet {
         String view = action.execute(request, response);
         request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         
-        }catch(Exception e){
-            request.setAttribute("error", ex.getMessage());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }catch(ServletException | IOException | SQLException | LoginException | AlreadyExistsException e){
+            System.out.println(e.getMessage());
         }
      }
-    }
+    
  
         
    
@@ -78,5 +78,6 @@ public class FrontController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }

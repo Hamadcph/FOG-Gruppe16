@@ -1,5 +1,6 @@
 package Presentation;
 
+import Logic.Exceptions.AlreadyExistsException;
 import Logic.Exceptions.LoginException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,8 +19,12 @@ abstract class Command {
     
     private static void initCommands(){
         commands = new HashMap<>();
-        commands.put("login", new LoginCommand() );
-        commands.put("registerCustomer", new RegisterCustomerCommand() );
+        commands.put("something", new LoginCommand() );
+        commands.put("something", new RegisterCustomerCommand() );
+        commands.put("something", new RegisterEmployeeCommand() );
+        commands.put("something", new OrderCarportCommand() );
+        commands.put("something", new CustomerInfoCommand() );
+        commands.put("something", new OrderInfoCommand() );
         
         
        }
@@ -35,7 +40,7 @@ abstract class Command {
         }
         
         abstract String execute(HttpServletRequest request, HttpServletResponse response)
-                    throws ServletException, IOException, SQLException;
+                    throws ServletException, IOException, SQLException, LoginException, AlreadyExistsException;
     
     
     

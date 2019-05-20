@@ -8,6 +8,7 @@ package Presentation;
 import Data.Mappers.DBFacade;
 import Data.Mappers.MapperFacade;
 import Logic.Exceptions.LoginException;
+import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,19 +23,21 @@ public class LoginCommand extends Command {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) t {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         MapperFacade mf = new DBFacade();
             int id = Integer.parseInt(request.getParameter("id"));
             String password = request.getParameter("password");
             
-            
             if(mf.verifyEmployee(id, password)){
-                request.getSession().setAttribute("id", id);
-                request.getSession().setAttribute("password", password);
-                request.getRequestDispatcher("").forward(request, response); 
+                request.setAttribute("id", id);
+                request.setAttribute("password", password);
+            return "login";
+            }else{     
+               return "notFound";
+                
             }
-            else{
-                request.getRequestDispatcher("").forward(request, response);      
+            
             }
+            
+    }
     
-}

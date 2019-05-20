@@ -20,7 +20,6 @@ public interface MapperFacade {
      public boolean createCustomer(Customer c) throws SQLException;
      public Customer getCustomer(int id) throws SQLException;
      public ArrayList<Customer> getAllCustomer() throws SQLException;
-     public Customer loginCustomer() throws SQLException;
      
      // DetailMapper
      public boolean createcarport(Carport c) throws SQLException;

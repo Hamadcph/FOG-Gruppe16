@@ -8,16 +8,9 @@ package Presentation;
 import Data.Customer;
 import Data.Mappers.DBFacade;
 import Data.Mappers.MapperFacade;
-import Logic.Exceptions.AlreadyExistsException;
-import Logic.Exceptions.LoginException;
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,21 +37,15 @@ public class RegisterCustomerCommand extends Command {
         
         if(mf.createCustomer(c)){
             
-            try {
+            
                 request.setAttribute("name", fname);
                 request.setAttribute("lastname", lname);
                 request.setAttribute("adress", adress);
                 request.setAttribute("phonenumber", cphone);
                 request.setAttribute("Email", mail);
                 
-                request.getRequestDispatcher("").forward(request, response);
-                
-            } catch (ServletException | IOException ex) {
-                System.out.println("Invalid information");
-            }
-            
         }
-        return "page.jsp";
+        return "something";
         
    } 
 

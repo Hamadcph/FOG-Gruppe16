@@ -30,9 +30,9 @@ public class OrderMapper {
         try {
             String sql = "INSERT INTO Orders(Delivery, Shipping, Materialid) VALUES(?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setDate(1, od.getDeliviry());
+            pst.setDate(1, od.getDeliveryDate());
             pst.setDouble(2, od.getShipping());
-            pst.setInt(3, od.getcarportmaterial_id());
+            pst.setInt(3, od.getCarportmaterial_id());
 
         } catch (SQLException ex) {
             ex.printStackTrace();

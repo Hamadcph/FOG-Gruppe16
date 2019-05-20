@@ -49,6 +49,10 @@ public class Customer {
      
     }
 
+    public Customer(int Cid, String name, String name0, String lastname, String adress, int phonenumber, int FK_ono) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     public int getID() {
         return ID;
