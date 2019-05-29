@@ -7,89 +7,72 @@ package Data;
 
 /**
  *
- * @author Hamad
+ * 
  */
 public class Customer {
-    private int ID;
+    private int id;
     private String email;
-    private String name;
+    private String password;
+    private String firstname;
     private String lastname;
-    private String adress;
-    private int phoneNumber;
-    private int FK_ordernumber;
+    private String address;
+    private int phone;
 
-    public Customer(int ID, String email, String password, String name, String lastname, String adress, int phoneNumber, int FK_ordernumber) {
-        this.ID = ID;
+    public Customer(int id, String email, String password, String firstname, String lastname, String address, int phone) {
+        this.id = id;
         this.email = email;
-        this.name = name;
+        this.password = password;
+        this.firstname = firstname;
         this.lastname = lastname;
-        this.adress = adress;
-        this.phoneNumber = phoneNumber;
-        this.FK_ordernumber = FK_ordernumber;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public Customer(String email, String password, String firstname, String lastname, String address, int phone) {
+        this.email = email;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phone = phone;
     }
     
-    public Customer(int id, String email, String name, String lastname, String adress, int phoneNumber) {
-        
-        this.ID = id;
-        this.email = email;
-        this.name = name;
-        this.lastname = lastname;
-        this.adress = adress;
-        this.phoneNumber = phoneNumber;
-     
-    }
-    
-    public Customer(String email, String name, String lastname, String adress, int phoneNumber) {
-        
-        this.email = email;
-        this.name = name;
-        this.lastname = lastname;
-        this.adress = adress;
-        this.phoneNumber = phoneNumber;
-     
-    }
 
-    public Customer(int Cid, String name, String name0, String lastname, String adress, int phonenumber, int FK_ono) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public String getEmail() {
         return email;
     }
-    
-    public String getName() {
-        return name;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstname() {
+        return firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public int getPhone() {
+        return phone;
     }
-
-    public int getFK_ordernumber() {
-        return FK_ordernumber;
-    }
-
-
-    
 
     @Override
     public String toString() {
-        return "Customer{" + "ID=" + ID + ", email=" + email + ", name=" + name + ", lastname=" + lastname + ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", FK_ordernumber=" + FK_ordernumber + '}';
+        return "Customer{" + "id=" + id + ", email=" + email + ", password=" + password + ", firstname=" + firstname + ", lastname=" + lastname + ", address=" + address + ", phone=" + phone + '}';
     }
-    
-    
+   
 
-}
+     
+    }
+
+

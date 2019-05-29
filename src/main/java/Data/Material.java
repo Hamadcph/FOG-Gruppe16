@@ -7,10 +7,10 @@ package Data;
 
 /**
  *
- * @author Hamad
+ * 
  */
 public class Material {
-
+    
     private int wood_qty;
     private int screw_qty;
     private String roof;
@@ -69,6 +69,5 @@ public class Material {
     public String toString() {
         return "Material{" + "wood_qty=" + wood_qty + ", screw_qty=" + screw_qty + ", roof=" + roof + ", bracket=" + bracket + ", carport=" + carport + '}';
     }
-
 
 }

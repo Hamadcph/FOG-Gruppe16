@@ -7,54 +7,67 @@ package Data;
 
 /**
  *
- * @author shpattt
+ * 
  */
 public class Employee {
-   private int empId;
+   private int userid;
    private String name;
    private String password;
-   private int phoneNo;
+   private int phone;
 
-    public Employee(int empId, String name, String password, int phoneNo) {
-        this.empId = empId;
+    public Employee(int userid, String name, String password, int phone) {
+        this.userid = userid;
         this.name = name;
         this.password = password;
-        this.phoneNo = phoneNo;
+        this.phone = phone;
     }
-
-    public Employee(String name, String password, int phoneNo) {
+        public Employee(int userid, String password) {
+        this.userid = userid;
+        this.password = password;
+    }
+            public Employee(int userid, String name, String password) {
+        this.userid = userid;
         this.name = name;
         this.password = password;
-        this.phoneNo = phoneNo;
     }
     
-    
 
-    public Employee(int empId, String password) {
-        this.empId = empId;
-        this.password = password;
+    public int getUserid() {
+        return userid;
     }
 
-    public int getEmpId() {
-        return empId;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public int getPhoneNo() {
-        return phoneNo;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    
-    
+    public int getPhone() {
+        return phone;
+    }
 
-   
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "userid=" + userid + ", name=" + name + ", password=" + password + ", phone=" + phone + '}';
+    }
 
 
 }

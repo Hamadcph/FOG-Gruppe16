@@ -5,39 +5,44 @@
  */
 package Presentation;
 
-import Data.Mappers.DBFacade;
-import Data.Mappers.MapperFacade;
-import Logic.Exceptions.LoginException;
+import Data.Customer;
+import Logic.Exception.CarportException;
+import Logic.Exception.PasswordFailExeption;
+import Logic.Exception.UserNotExistingExeption;
+import Logic.DBFacade;
+import Logic.MapperFacade;
+import java.io.IOException;
 import java.sql.SQLException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Younes
+ * 
  */
 public class LoginCommand extends Command {
 
-    public LoginCommand() {
+    @Override
+    String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, UserNotExistingExeption {
+        System.out.println("LOGINCOMMAND///////////////////////////////7");
+        MapperFacade mf = new DBFacade();
+        String email = request.getParameter("email");
+        System.out.println(email);
+        String password = request.getParameter("pass");
+        System.out.println(password);
+
+        if (mf.verifyCustomer(email, password)) {
+            Customer customer = mf.getCustomer(email);
+            System.out.println("CUSTOMER = " + customer);
+            request.getSession().setAttribute("customer", customer);
+            System.out.println("The customer is = " + request.getSession().getAttribute("customer"));
+
+            return "loginscreencustomer";
+        } else if (email.equals("admin") && password.equals("admin")) {
+            return "loginscreenemployee";
+        }
+        return "index";
     }
 
-    @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        MapperFacade mf = new DBFacade();
-            int id = Integer.parseInt(request.getParameter("id"));
-            String password = request.getParameter("password");
-            
-            if(mf.verifyEmployee(id, password)){
-                request.setAttribute("id", id);
-                request.setAttribute("password", password);
-            return "login";
-            }else{     
-               return "notFound";
-                
-            }
-            
-            }
-            
-    }
-    
+}

@@ -6,7 +6,7 @@
 package Data.Mappers;
 
 import Data.Carport;
-import DB.Connector;
+import Data.Connection.Connector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Hamad
+ * 
  */
 public class CarportMapper {
     Connection conn;
@@ -24,40 +24,21 @@ public class CarportMapper {
         this.conn = new Connector().getConnection();
     }   
     
-    public boolean createcarport(Carport c) throws SQLException{
-        
-        try{
-            String sql = "INSERT INTO Carport(length, width, roof) VALUES(?, ?, ?)";
-            PreparedStatement pst = conn.prepareStatement(sql);
-
-            pst.setInt(1, c.getLength());
-            pst.setInt(2, c.getWidth());
-            pst.setString(3, c.getRoof());
-            
-            pst.executeLargeUpdate();
-        
-            return true;
-        } catch(SQLException ex){
-            ex.printStackTrace();
-        }
-            return false;
-    }
     
     public Carport getCarport(int id) throws SQLException{
         
         try{
-            String sql = "SELECT * FROM Carport WHERE CarportID=?";
+            String sql = "SELECT * FROM carports WHERE carport_id=?;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, id);
             
             ResultSet rs = pst.executeQuery();
-            
             if(rs.next()){
-                int length = rs.getInt("Length");
-                int width = rs.getInt("Width");
-                String roof = rs.getString("Roofstyle");
-                int incline = rs.getInt("Inclined");
-                Carport c = new Carport(length, width, roof,incline);
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                String rooftype = rs.getString("rooftype");
+                int inclination = rs.getInt("inclination");
+                Carport c = new Carport(length, width, inclination, rooftype);
                 return c;
             }
             return null;
@@ -71,7 +52,7 @@ public class CarportMapper {
         public int getCarportID(int length, int width, String roof, int inclined) throws SQLException{
         
         try{
-            String sql = "SELECT * FROM Carport WHERE Carport.Length = ? AND Carport.width = ? AND Carport.roof = ? AND Carport.inclined = ?";
+            String sql = "SELECT * FROM carports WHERE length = ? AND width = ? AND rooftype = ? AND inclination = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, length);
             pst.setInt(2, width);
@@ -81,7 +62,7 @@ public class CarportMapper {
             ResultSet rs = pst.executeQuery();
             
             if(rs.next()){
-                return rs.getInt("CarportID");
+                return rs.getInt("carport_id");
             }
             return 0;
         

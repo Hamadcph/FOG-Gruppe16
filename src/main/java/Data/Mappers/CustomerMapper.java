@@ -5,94 +5,118 @@
  */
 package Data.Mappers;
 
-import DB.Connector;
+import Data.Connection.Connector;
 import Data.Customer;
+import Logic.Exception.UserNotExistingExeption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author shpattt
+ * 
  */
 public class CustomerMapper {
-     Connection conn;
-    
+
+    Connection conn;
+
     public CustomerMapper() {
         this.conn = new Connector().getConnection();
     }
-    
-    public boolean createCustomer(Customer c) throws SQLException{
-        
-        try{
-            String sql = "INSERT INTO customer(name, lastname, adress, phonenumber, Email) VALUES(?, ?, ?, ?, ?)";
+
+    public void createCustomer(Customer c) throws SQLException {
+
+        try {
+            String sql = "INSERT INTO customers(firstname, lastname, address, phone, password, email) VALUES(?,?, ?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, c.getName());
+            pst.setString(1, c.getFirstname());
             pst.setString(2, c.getLastname());
-            pst.setString(3, c.getAdress());
-            pst.setInt(4, c.getPhoneNumber());
-            pst.setString(5, c.getEmail());
+            pst.setString(3, c.getAddress());
+            pst.setInt(4, c.getPhone());
+            pst.setString(5, c.getPassword());
+            pst.setString(6, c.getEmail());
 
             pst.executeUpdate();
-            
-            return true;
-        } catch(SQLException ex){
-            ex.printStackTrace();
-            System.out.println("not working");
-        
-            return false;
-        }
-  
-    }
-    
-     public Customer getCustomer(int id) throws SQLException{
-        
-         String sql = "SELECT * FROM Customer WHERE id=?";
-         PreparedStatement pst = conn.prepareStatement(sql);
-         pst.setInt(1, id);
-         ResultSet rs = pst.executeQuery();
-         
-         
-         if(rs.next()){
-             int Cid = rs.getInt("id");
-             String name = rs.getString("name");
-             String lastname = rs.getString("lastname");
-             String adress = rs.getString("adress");
-             int phonenumber = rs.getInt("phonenumber");
-             int FK_ono = rs.getInt("FK_ono");
-             Customer c = new Customer(Cid, name, name, lastname, adress, phonenumber, FK_ono);
-             
-             return c;
-         }
-         
-         return null;
-        }
-     
-     public ArrayList<Customer> getAllCustomer() throws SQLException{
-         
-         ArrayList<Customer> customer = new ArrayList<>();
-         
-         String sql = "SELECT * from Customer";         
-         PreparedStatement pst = conn.prepareStatement(sql);
-         ResultSet rs = pst.executeQuery();
-         
-        while(rs.next()){ 
-            int Cid = rs.getInt("id");
-            String name = rs.getString("name");
-            String lastname = rs.getString("lastname");
-            String adress = rs.getString("adress");
-            int phonenumber = rs.getInt("phonenumber");
-            String email = rs.getString("email");
-            int FK_ono = rs.getInt("FK_ono");
-            
-            Customer c = new Customer(Cid, email, name, lastname, adress, phonenumber, FK_ono);
-            customer.add(c);
-        
-        }  
-         return customer;
-     }
-}
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("not working" + ex.getMessage());
+
+        }
+
+    }
+
+    public Customer getCustomer(int id) throws UserNotExistingExeption {
+        Customer c = null;
+        try {
+            String sql = "SELECT * FROM customers WHERE customer_id = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String password = rs.getString("password");
+                String firstname = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                String address = rs.getString("address");
+                String email = rs.getString("email");
+                int phone = rs.getInt("phone");
+                c = new Customer(id, email, password, firstname, lastname, address, phone);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+    public Customer getCustomer(String email) throws UserNotExistingExeption {
+        Customer c = null;
+        try {
+            String sql = "SELECT * FROM customers WHERE email =?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("customer_id");
+                String password = rs.getString("password");
+                String firstname = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                String address = rs.getString("address");
+                int phone = rs.getInt("phone");
+                c = new Customer(id, email, password, firstname, lastname, address, phone);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+
+    public boolean verifyCustomer(String email, String password) {
+
+        try {
+            String sql = "SELECT email, password FROM customers WHERE email=?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, email);
+            
+            ResultSet rs = pst.executeQuery();
+            System.out.println("PASSWORD = " + password);
+            if (rs.next()) {
+                if (password.equals(rs.getString("password"))) {
+                    return true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return false;
+    }
+
+
+}
